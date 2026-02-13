@@ -1,41 +1,29 @@
-:::writing{variant=“standard” id=“58342”}
+# Convergence rates for Tikhonov regularization on compact sets: application to neural networks
 
-NN Regularization with Neural Networks for Inverse Problems
+## Overview
 
-This repository contains the implementation of several reconstruction methods for inverse problems based on Radon operators, including classical variational techniques, Plug-and-Play priors, and a neural implicit regularization approach.
+This repository contains the source code for the numerical experiments presented in [[1]](https://arxiv.org/abs/2505.19936). The paper introduces a novel regularization method for inverse problems, where the solution is parameterized using a Multi-Layer Perceptron (MLP).
 
-The code accompanies the numerical experiments presented in our work on neural-network-based regularization methods.
+---
 
-⸻
+## Numerical Experiments
 
-Repository Structure
+The code performs reconstructions for inverse problems involving:
 
-forward/            Discretized forward operators for Standard and Attenuated Radon transforms
+- Standard (linear) Radon transform  
+- Non-linear attenuated Radon transform  
 
-methods/
-    tikhonov.py     Non-negative Tikhonov regularization via projected gradient descent
-    pnp.py          Plug-and-Play (PnP-PGD) reconstruction with a pretrained DnCNN denoiser
-    mlp.py          Proposed MLP-based implicit neural regularization
+The results are compared using the following approaches:
 
-test_lin_rad.py     Experiments with the Standard Radon operator
-test_non_lin_rad.py Experiments with the Attenuated Radon operator
+- **Non-negative Tikhonov regularization**
+- **Plug-and-Play reconstruction (PnP-PGD)**
+- **Our proposed MLP-based regularization method**
+___
 
-aux_function.py     Visualization utilities and reconstruction metrics (PSNR, SSIM, L2 error)
+## How to run our code
 
-mplemented Methods
+The tests concerning the inverse problem with standard (linear) and (non-linear) attenuated Radon trasform can be performed by running `test_lin_rad.py` and `test_non_lin_rad.py`, respectively.
 
-The repository compares three reconstruction approaches:
-	•	Non-negative Tikhonov regularization
-	•	Plug-and-Play reconstruction (PnP-PGD)
-	•	Implicit neural regularization using MLPs
-
-The neural approach represents the reconstruction as a continuous function learned through coordinate-based neural networks.
-
-Requirements
-
-The code was tested with:
-	•	Python 3.10.13
-	•	PyTorch
-	•	DeepInverse (for the Plug-and-Play baseline)
-	•	NumPy
-	•	Matplotlib
+***
+## References
+[1] Palumbo, B., Massa, P., & Benvenuto, F. (2025). Convergence rates for Tikhonov regularization on compact sets: application to neural networks. arXiv preprint arXiv:2505.19936.
